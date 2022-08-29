@@ -1,0 +1,85 @@
+<div class="example-action-buttons">
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div>
+<!-- #docregion multi -->
+<mat-accordion class="example-headers-align" multi>
+<!-- #enddocregion multi -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal data
+      </mat-panel-title>
+      <mat-panel-description>
+        Type your name and age
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>First name</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" min="1">
+    </mat-form-field>
+
+  </mat-expansion-panel>
+<!-- #docregion disabled -->
+  <mat-expansion-panel disabled>
+<!-- #enddocregion disabled -->
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Destination
+      </mat-panel-title>
+      <mat-panel-description>
+        Type the country name
+        <mat-icon>map</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Country</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+      Time Range
+      </mat-panel-title>
+      <mat-panel-description>
+      {{dateFrom.value  | date:'yyyy-MM-dd HH:MM:SS'}}  -  {{dateEnd.value  | date:'yyyy-MM-dd HH:MM:SS'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>From Date</mat-label>
+      <input matInput [formControl]="dateFrom" [matDatepicker]="picker" (focus)="picker.open()" readonly>
+    </mat-form-field>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-form-field appearance="fill">
+    <mat-label>To Date</mat-label>
+    <input matInput [formControl]="dateEnd" [matDatepicker]="picker1" (focus)="picker1.open()" readonly>
+  </mat-form-field>
+  <mat-datepicker #picker1></mat-datepicker>
+
+  <br>
+  <button>
+  Apply Changes
+  </button>
+
+  <br><br><br>
+  <mat-label>Recently used absolute ranges:</mat-label>
+  {{dateFrom.value  | date:'yyyy-MM-dd HH:MM:SS'}}  -  {{dateEnd.value  | date:'yyyy-MM-dd HH:MM:SS'}}
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
